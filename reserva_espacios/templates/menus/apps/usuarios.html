@@ -1,0 +1,4 @@
+{% url 'usuarios:inicio' as inicio %}
+<li {% if inicio in request.path %} class="active"{% endif %}>
+    <a href="{{ inicio }}"><i class="fa fa-th-large"></i> <span class="nav-label">Inicio</span></a>
+</li>

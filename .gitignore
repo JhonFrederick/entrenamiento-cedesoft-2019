@@ -1,0 +1,5 @@
+*migrations/
+.idea/
+*__pycache__/
+reserva_espacios/reserva_espacios/settings.py
+reserva_espacios/secrets.json

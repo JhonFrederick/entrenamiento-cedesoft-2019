@@ -6,7 +6,7 @@ Proyecto: Reserva de espacios
 - Python 3.6
 - PostgreSQL 9.5 +
 
-#### Intrucciones
+#### Instrucciones
 
 1. Crear un ambiente virtual para el proyecto (Recomendado)
 2. Clonar el proyecto en el ambiente virtual creado anteriormente

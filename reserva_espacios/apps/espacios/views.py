@@ -8,11 +8,19 @@ from .models import Espacio
 
 def crearEspacio(request):
     if request.method =='POST':
-        espacio_form = EspacioForm(request.POST)
+        espacio_form = EspacioForm(request.POST,request.FILES)
         if espacio_form.is_valid():
             espacio_form.save()
-            return redirect('index') 
+            return redirect('usuarios:inicio') 
     else:
         espacio_form = EspacioForm()
+    return render(request,'espacios/registro.html',{'espacio_form':espacio_form})
+
+
+def listarEspacio(request):
+    espacios = Espacio.objects.all()
+    return render(request, 'espacios/listar_espacios.html',{'espacios':espacios})
+
+
         
-    #return render(request,'espacios/crear_espacio.html',{'espacio_form':EspacioForm})
+    

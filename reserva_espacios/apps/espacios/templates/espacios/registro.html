@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block titulo%}
+
+Registro Espacio
+
+{% endblock titulo %}
+
+{% block titulo_pagina %}
+Registro de Espacio
+{% endblock titulo_pagina %}
+
+{% block miga_pan %}
+    <li class="breadcrumb-item active">
+        <strong>Registro</strong>
+    </li>
+{% endblock miga_pan %}
+
+{% block contenido_panel %}
+    <form method='POST' enctype="multipart/form-data" >
+        {% csrf_token %}
+        {% bootstrap_form espacio_form %}
+        <div class="form-group">
+            <button class = "btn btn-outline-info" type = "submit">Agregar</button>
+        </div>
+    </form>
+
+
+{% endblock contenido_panel %}

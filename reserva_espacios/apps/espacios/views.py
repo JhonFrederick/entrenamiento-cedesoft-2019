@@ -19,7 +19,7 @@ def crearEspacio(request):
 
 def listarEspacio(request):
     espacios = Espacio.objects.all()
-    return render(request, 'espacios/listar_espacios.html',{'espacios':espacios})
+    return render(request, 'espacios/consultar_espacios.html',{'espacios':espacios})
 
 
         

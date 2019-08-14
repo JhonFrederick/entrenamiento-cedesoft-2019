@@ -19,3 +19,6 @@ def registro(request):
         form = FormularioRegistroUsuario()
     
     return render(request, 'usuarios/registro.html', {'form': form})
+
+
+

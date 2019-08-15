@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block titulo%}
+
+Eliminar Espacio
+
+{% endblock titulo %}
+
+{% block titulo_pagina %}
+Eliminar Espacio
+{% endblock titulo_pagina %}
+
+{% block miga_pan %}
+    <li class="breadcrumb-item active">
+        <strong>Eliminar</strong>
+    </li>
+{% endblock miga_pan %}
+
+{% block contenido_panel %}
+    <form method='POST' enctype="multipart/form-data" >
+        {% csrf_token %}
+        <h2>¿Desea eliminar el espacio {{ Espacio.numero }}</h2>
+            <button type="submit">Eliminar</button>
+            <a href="{% url 'espacios:consultar_espacio' %}">Cancelar</a>
+        </div>
+    </form>
+
+
+{% endblock contenido_panel %}

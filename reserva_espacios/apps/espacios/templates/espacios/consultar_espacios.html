@@ -117,21 +117,27 @@ Consulta de Espacios
                                         class="btn btn-warning dim"><i class="fa fa-edit"></i></button></a>
                                 <a href="{% url 'espacios:eliminar_espacio' Espacio.numero %}"><button
                                         class="btn btn-danger dim"><i class="fa fa-trash"></i></button></a>
-                                <a data-toggle="modal" data-target="#myModal">
+                                <a data-toggle="modal" data-target="#myModal_{{Espacio.numero}}">
                                     <button class="btn btn-primary dim">
                                         <i class="fa fa-picture-o"></i>
                                     </button>
                                 </a>
                                 
-                                <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                <div class="modal inmodal" id="myModal_{{Espacio.numero}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
                                             <div class="modal-header">
                                                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                                                <h4>Fotografia del espacio</h4>
+                                                <div>
+                                                <h1 align="center">{{Espacio.descripcion}}</h1>
+                                                <h4 align="center">Fotografía del espacio</h4>
+                                                </div>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ MEDIA_URL }}{{Espacio.imagen}}" width="541" height="400">
+                                                <div class="col-md-12">
+                                                    <img src="{{Espacio.imagen.url}}" width='100%' >
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

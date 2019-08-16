@@ -26,5 +26,17 @@ Registro de usuarios
         </div>
     </form>
 
+    <script>
+        var sel = document.getElementById('id_rol');
+        sel.onchange = function(){
+            if (sel.value == 'estudiante'){
+                console.log('soy un estudiante')
+                document.getElementById("id_sede").disabled = true;
+            }
+            else{
+                document.getElementById("id_sede").disabled = false;
+            }
+        };
+    </script>
 
 {% endblock contenido_panel %}

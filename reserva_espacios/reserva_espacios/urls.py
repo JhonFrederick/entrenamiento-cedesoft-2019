@@ -15,6 +15,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),  #<-- Solo usar para pruebas iniciales
@@ -22,4 +24,4 @@ urlpatterns = [
     path('espacios/', include('apps.espacios.urls', namespace='espacios')),
     path('reservas/', include('apps.reservas.urls', namespace='reservas'))
 
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

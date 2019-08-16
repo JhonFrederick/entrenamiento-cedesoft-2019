@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioRegistroUsuario, FormularioRegistroEstudiante
+from .forms import FormularioRegistroUsuario
+from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib import messages
+from django.contrib.auth import login, logout
 from .models import Usuario
 
 def inicio(request):
@@ -37,6 +39,22 @@ def registro_estudiante(request):
     return render(request, 'usuarios/registro.html', {'form': form})
 
 def consulta_usuario(request):
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(data=request.POST)
+        if form.is_valid():
+            user = form.get_user()
+            login(request,user)
+            return redirect('usuarios:inicio')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'usuarios/login.html', {'form':form})
+
+def logout_view(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect('usuarios:inicio')
+
 
     context = {
         'usuarios': Usuario.objects.all()

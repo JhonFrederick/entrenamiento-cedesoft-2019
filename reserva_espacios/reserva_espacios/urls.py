@@ -23,6 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),  #<-- Solo usar para pruebas iniciales
     path('', views.login_view, name = 'login'),
     path('usuarios/', include('apps.usuarios.urls', namespace='usuarios')),
-    path('espacios/', include('apps.espacios.urls', namespace='espacios'))
+    path('espacios/', include('apps.espacios.urls', namespace='espacios')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

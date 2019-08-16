@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    Perfil
+{% endblock %}
+
+{% block titulo_pagina %}
+    Perfil
+{% endblock %}
+
+{% block miga_pan %}
+    <li class="breadcrumb-item active">
+        <strong>Inicio</strong>
+    </li>
+{% endblock %}
+
+{% block titulo_panel %}
+    Detalles del Perfil
+{% endblock %}
+
+{% block contenido_panel %}
+<div class="ibox ">
+    <div class="ibox-title">
+        <h5>Profile Detail</h5>
+    </div>
+    <div>
+        <div class="ibox-content no-padding border-left-right">
+            <img alt="image" class="img-fluid" src="img/profile_big.jpg">
+        </div>
+        <div class="ibox-content profile-content">
+            <h4><strong>{{user.first_name}} {{user.last_name}}</strong></h4>
+            <p><i class="fa fa-map-marker"></i> {{user.rol}}</p>
+            <h5>
+                Datos Personales
+            </h5>
+            <div>
+                <p>
+                    Email: {{user.email}}
+                </p>
+                <p>
+                    Cedula: {{user.cedula}}
+                </p>
+                <p>
+                    Sede: {{user.sede}}
+                </p>
+                <p>
+                    Dependecia: {{user.dependencia}}
+                </p>
+            </div>
+            <div class="user-button">
+                <div class="row">
+                    <div class="col-md-6">
+                        <a href="{% url 'usuarios:editar' user.cedula %}">
+                            <button type="button" class="btn btn-primary btn-sm btn-block"><i class="fa fa-pencil-square-o"></i> Editar Perfil</button>
+                        </a>
+                        
+                    </div>
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-default btn-sm btn-block"><i class="fa fa-unlock-alt"></i> Cambiar Contraseña </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+{% endblock %}

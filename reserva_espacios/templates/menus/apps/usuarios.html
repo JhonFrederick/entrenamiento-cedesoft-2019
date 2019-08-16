@@ -1,4 +1,24 @@
 {% url 'usuarios:inicio' as inicio %}
+{% url 'usuarios:registro' as registro %}
+{% url 'usuarios:consulta_u' as consulta %}
+{% url 'espacios:crear_espacio' as crear_espacio %}
+{% url 'espacios:consultar_espacio' as consultar_espacio %}
 <li {% if inicio in request.path %} class="active"{% endif %}>
     <a href="{{ inicio }}"><i class="fa fa-th-large"></i> <span class="nav-label">Inicio</span></a>
+</li>
+
+<li>
+    <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Usuarios</span></a>
+    <ul class="nav nav-second-level collapse">
+        <li><a href="{{ registro }}">Registrar</a></li>
+        <li><a href="{{ consulta }}">Consultar</a></li>
+    </ul>
+</li>
+
+<li>
+    <a href="#"><i class="fa fa-building-o"></i> <span class="nav-label">Espacios</span></a>
+    <ul class="nav nav-second-level collapse">
+        <li><a href="{{ crear_espacio }}">Registrar</a></li>
+        <li><a href="{{ consultar_espacio }}">Consultar</a></li>
+    </ul>
 </li>

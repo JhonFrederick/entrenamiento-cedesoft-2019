@@ -111,19 +111,20 @@ Consulta de Espacios
                             <td>{{Espacio.edificio}}</td>
                             <td>{{Espacio.capacidad}}</td>
                             <td>{{Espacio.activo}}</td>
+                            <!-- <td><img src="{{Espacio.imagen.url}}"></td>-->
                             <td>
 
                                 <a href="{% url 'espacios:editar_espacio' Espacio.numero %}"><button
                                         class="btn btn-warning dim"><i class="fa fa-edit"></i></button></a>
                                 <a href="{% url 'espacios:eliminar_espacio' Espacio.numero %}"><button
                                         class="btn btn-danger dim"><i class="fa fa-trash"></i></button></a>
-                                <a data-toggle="modal" data-target="#myModal">
+                                <a data-toggle="modal" data-target="#myModal_{{Espacio.numero}}">
                                     <button class="btn btn-primary dim">
                                         <i class="fa fa-picture-o"></i>
                                     </button>
                                 </a>
                                 
-                                <div class="modal inmodal" id="myModal" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                                <div class="modal inmodal" id="myModal_{{Espacio.numero}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
                                     <div class="modal-dialog">
                                     <div class="modal-content animated bounceInRight">
                                             <div class="modal-header">
@@ -131,7 +132,7 @@ Consulta de Espacios
                                                 <h4>Fotografia del espacio</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ MEDIA_URL }}{{Espacio.imagen}}" width="541" height="400">
+                                                <img src="{{Espacio.imagen.url}}" width='80%'>
                                             </div>
                                         </div>
                                     </div>

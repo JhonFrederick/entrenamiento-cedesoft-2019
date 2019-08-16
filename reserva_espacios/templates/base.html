@@ -1,5 +1,6 @@
 {% load staticfiles %}
 
+
 <!DOCTYPE html>
 <html>
 
@@ -146,7 +147,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="login.html">
+                            <a href="{% url 'usuarios:login' %}">
                                 <i class="fa fa-sign-out"></i> Log out
                             </a>
                         </li>

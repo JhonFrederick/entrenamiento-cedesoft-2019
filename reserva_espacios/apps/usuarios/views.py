@@ -21,10 +21,6 @@ def registro(request):
     
     return render(request, 'usuarios/registro.html', {'form': form})
 
-<<<<<<< HEAD
-
-
-=======
 def registro_estudiante(request):
     if request.method == 'POST':
         form = FormularioRegistroEstudiante(request.POST)
@@ -47,4 +43,3 @@ def consulta_usuario(request):
     }
 
     return render(request, 'usuarios/consulta.html', context)
->>>>>>> 2d02d640c05c2a3880b2f48cd71d06fa8f666057

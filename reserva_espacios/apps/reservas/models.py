@@ -2,7 +2,6 @@ from django.db import models
 
 # Create your models here.
 class Reserva(models.Model):
-    codigo = models.CharField(max_length = 10, primary_key=True)
     id_solicitante = models.ForeignKey('usuarios.Usuario', on_delete = models.CASCADE)
     codigo_espacio = models.ForeignKey('espacios.Espacio', on_delete = models.CASCADE)
     fecha_solicitud = models.DateField(auto_now = True)
@@ -18,12 +17,12 @@ class Reserva(models.Model):
     RECHAZADO = "Rechazado"
 
     ESTADOS_CHOICES = {
-        (ACEPTADO, 'aceptado'),
-        (EN_ESPERA, 'en_espera'),
-        (RECHAZADO, 'rechazado'),
+        (ACEPTADO, 'Aceptado'),
+        (EN_ESPERA, 'En espera'),
+        (RECHAZADO, 'Rechazado'),
     }
 
-    estados_choices = models.CharField(
+    estado = models.CharField(
         choices=ESTADOS_CHOICES,
         max_length=10,
         default = EN_ESPERA

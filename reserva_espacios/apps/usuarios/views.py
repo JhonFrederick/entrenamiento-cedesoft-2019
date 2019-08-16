@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioRegistroUsuario
+from .forms import FormularioRegistroUsuario,FormularioRegistroEstudiante
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -39,6 +39,8 @@ def registro_estudiante(request):
     return render(request, 'usuarios/registro.html', {'form': form})
 
 def consulta_usuario(request):
+    return redirect('usuarios:inicio')
+    
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)

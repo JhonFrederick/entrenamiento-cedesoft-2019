@@ -131,7 +131,10 @@ Consulta de Espacios
                                                 <h4>Fotografia del espacio</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <img src="{{ MEDIA_URL }}{{Espacio.imagen}}" width="541" height="400">
+                                                <div class="col-md-12">
+                                                    <img src="{{Espacio.imagen.url}}" width="541" height="400">
+                                                </div>
+                                                
                                             </div>
                                         </div>
                                     </div>

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+{% block titulo %}
+Solicitud reserva
+{% endblock titulo%}
+
+{% block miga_pan %}
+<li class="breadcrumb-item active">
+    <strong>Solicitar</strong>
+</li>
+{% endblock miga_pan %}
+
+{% block titulo_pagina %}
+Solicitar reserva de espacio
+{% endblock titulo_pagina %}
+
+{% block contenido_panel %}
+<form method='POST' >
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <div class="form-group">
+        <button class = "btn btn-outline-info" type = "submit">Solicitar</button>
+    </div>
+</form>
+
+{% endblock contenido_panel %}

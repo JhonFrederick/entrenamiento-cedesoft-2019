@@ -1,10 +1,7 @@
 from django.shortcuts import render, redirect
-<<<<<<< HEAD
 from .forms import FormularioRegistroUsuario,FormularioRegistroEstudiante
 from .forms import FormularioRegistroUsuario,FormularioModificarUsuario
-=======
 from .forms import FormularioRegistroUsuario, FormularioRegistroEstudiante
->>>>>>> luisRestrepo
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -68,7 +65,6 @@ def logout_view(request):
         logout(request)
         return redirect('login')
 
-<<<<<<< HEAD
 def perfil(request):
     return render(request, 'usuarios/perfil.html')
 
@@ -89,8 +85,6 @@ def editarUsuario(request, cedula):
     
     return render (request,'usuarios/modificar.html',{'usuarios_form':usuarios_form, 'error':error})
 
-=======
->>>>>>> luisRestrepo
     context = {
         'usuarios': Usuario.objects.all()
     }

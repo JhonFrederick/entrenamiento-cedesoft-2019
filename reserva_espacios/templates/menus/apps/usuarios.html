@@ -3,10 +3,13 @@
 {% url 'usuarios:consulta_u' as consulta %}
 {% url 'espacios:crear_espacio' as crear_espacio %}
 {% url 'espacios:consultar_espacio' as consultar_espacio %}
+{% url 'reservas:solicitar' as solicitar_reserva %}
+{% url 'reservas:consultar_reservas' as consultar_reserva %}
+
 <li {% if inicio in request.path %} class="active"{% endif %}>
     <a href="{{ inicio }}"><i class="fa fa-th-large"></i> <span class="nav-label">Inicio</span></a>
 </li>
-
+{% if user.rol == 'administrador' %}
 <li>
     <a href="#"><i class="fa fa-user-o"></i> <span class="nav-label">Usuarios</span></a>
     <ul class="nav nav-second-level collapse">
@@ -14,11 +17,24 @@
         <li><a href="{{ consulta }}">Consultar</a></li>
     </ul>
 </li>
+{% endif %}
 
 <li>
     <a href="#"><i class="fa fa-building-o"></i> <span class="nav-label">Espacios</span></a>
     <ul class="nav nav-second-level collapse">
+        {% if user.rol == 'administrador' %}
         <li><a href="{{ crear_espacio }}">Registrar</a></li>
+        {% endif %}
         <li><a href="{{ consultar_espacio }}">Consultar</a></li>
+    </ul>
+</li>
+
+<li>
+    <a href="#"><i class="fa fa-envelope-o"></i> <span class="nav-label">Reserva</span></a>
+    <ul class="nav nav-second-level collapse">
+        {% if user.rol == 'administrador' %}
+        <li><a href="{{ consultar_reserva }}">Consultar</a></li>
+        {% endif %}
+        <li><a href="{{ solicitar_reserva }}">Solicitar</a></li>
     </ul>
 </li>

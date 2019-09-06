@@ -22,10 +22,12 @@ Consulta de Espacios
 <div class="ibox ">
     <div class="ibox-title">
         <h5>Espacios</h5>
-        <div>
+        {% if user.rol == 'administrador' %}
+        <div>                
             <a href="{% url 'espacios:crear_espacio' %}"><button class="btn btn-primary dim"><i
                         class="fa fa-plus"></i></button></a>
         </div>
+        {% endif %}
         <div class="ibox-tools">
             <a class="collapse-link">
                 <i class="fa fa-chevron-up"></i>
@@ -113,11 +115,12 @@ Consulta de Espacios
                             <td>{{Espacio.activo}}</td>
                             <!-- <td><img src="{{Espacio.imagen.url}}"></td>-->
                             <td>
-
+                                {% if user.rol == 'administrador' %}
                                 <a href="{% url 'espacios:editar_espacio' Espacio.numero %}"><button
                                         class="btn btn-warning dim"><i class="fa fa-edit"></i></button></a>
                                 <a href="{% url 'espacios:eliminar_espacio' Espacio.numero %}"><button
                                         class="btn btn-danger dim"><i class="fa fa-trash"></i></button></a>
+                                {% endif %}
                                 <a data-toggle="modal" data-target="#myModal_{{Espacio.numero}}">
                                     <button class="btn btn-primary dim">
                                         <i class="fa fa-picture-o"></i>

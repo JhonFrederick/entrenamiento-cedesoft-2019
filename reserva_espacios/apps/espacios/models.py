@@ -28,3 +28,6 @@ class Espacio(models.Model):
     edificio = models.CharField(max_length = 10)
     capacidad = models.IntegerField()
     activo = models.BooleanField(default = True)
+
+    def __str__(self):
+        return self.espacios + " " + self.numero

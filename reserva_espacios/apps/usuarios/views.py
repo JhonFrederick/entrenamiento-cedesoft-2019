@@ -39,12 +39,12 @@ def registro_estudiante(request):
     return render(request, 'usuarios/registro.html', {'form': form})
 
 def consulta_usuario(request):
-
     context = {
         'usuarios': Usuario.objects.all()
     }
-    return render(request, 'usuarios/consulta.html', context)
 
+    return render(request, 'usuarios/consulta.html', context)
+    
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)

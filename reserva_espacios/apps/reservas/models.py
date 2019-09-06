@@ -27,3 +27,4 @@ class Reserva(models.Model):
         max_length=10,
         default = EN_ESPERA
     )
+

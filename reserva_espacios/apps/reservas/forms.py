@@ -4,5 +4,5 @@ from .models import Reserva
 class FormularioRegistroReserva(forms.ModelForm):
     class Meta():
         model = Reserva
-        fields = ('id', 'id_solicitante', 'codigo_espacio', 'fecha_inicio', 'fecha_fin', 'hora_inicio', 'hora_fin', 'proposito', 'estado')
+        fields = ('codigo_espacio', 'fecha_inicio', 'fecha_fin', 'hora_inicio', 'hora_fin', 'proposito')
         

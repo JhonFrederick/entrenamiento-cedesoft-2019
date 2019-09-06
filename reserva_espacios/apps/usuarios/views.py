@@ -1,6 +1,10 @@
 from django.shortcuts import render, redirect
+<<<<<<< HEAD
 from .forms import FormularioRegistroUsuario,FormularioRegistroEstudiante
 from .forms import FormularioRegistroUsuario,FormularioModificarUsuario
+=======
+from .forms import FormularioRegistroUsuario, FormularioRegistroEstudiante
+>>>>>>> luisRestrepo
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
@@ -15,7 +19,7 @@ def registro(request):
     if request.method == 'POST':
         form = FormularioRegistroUsuario(request.POST)
         if form.is_valid():
-            a = form.save(commit = False)
+            a = form.save(commit=False)
             cedula = form.cleaned_data.get('cedula')
             a.username = cedula
             a.save()
@@ -23,14 +27,14 @@ def registro(request):
             return redirect('login')
     else:
         form = FormularioRegistroUsuario()
-    
+
     return render(request, 'usuarios/registro.html', {'form': form})
 
 def registro_estudiante(request):
     if request.method == 'POST':
         form = FormularioRegistroEstudiante(request.POST)
         if form.is_valid():
-            a = form.save(commit = False)
+            a = form.save(commit=False)
             cedula = form.cleaned_data.get('cedula')
             a.username = cedula
             a.save()
@@ -38,28 +42,33 @@ def registro_estudiante(request):
             return redirect('usuarios:inicio')
     else:
         form = FormularioRegistroEstudiante()
-    
+
     return render(request, 'usuarios/registro.html', {'form': form})
 
 def consulta_usuario(request):
-    return redirect('usuarios:inicio')
+    context = {
+        'usuarios': Usuario.objects.all()
+    }
+
+    return render(request, 'usuarios/consulta.html', context)
     
 def login_view(request):
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request,user)
+            login(request, user)
             return redirect('usuarios:inicio')
     else:
         form = AuthenticationForm()
-    return render(request, 'usuarios/login.html', {'form':form})
+    return render(request, 'usuarios/login.html', {'form': form})
 
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
         return redirect('login')
 
+<<<<<<< HEAD
 def perfil(request):
     return render(request, 'usuarios/perfil.html')
 
@@ -80,6 +89,8 @@ def editarUsuario(request, cedula):
     
     return render (request,'usuarios/modificar.html',{'usuarios_form':usuarios_form, 'error':error})
 
+=======
+>>>>>>> luisRestrepo
     context = {
         'usuarios': Usuario.objects.all()
     }

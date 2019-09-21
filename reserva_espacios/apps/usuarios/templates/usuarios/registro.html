@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block titulo%}
+
+Registro
+
+{% endblock titulo %}
+
+{% block titulo_pagina %}
+Registro de usuarios
+{% endblock titulo_pagina %}
+
+{% block miga_pan %}
+    <li class="breadcrumb-item active">
+        <strong>Registro</strong>
+    </li>
+{% endblock miga_pan %}
+
+{% block contenido_panel %}
+    <form method='POST' >
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <div class="form-group">
+            <button class = "btn btn-outline-info" type = "submit">Agregar</button>
+        </div>
+    </form>
+
+    <script>
+        var sel = document.getElementById('id_rol');
+        sel.onchange = function(){
+            if (sel.value == 'estudiante'){
+                console.log('soy un estudiante')
+                document.getElementById("id_sede").disabled = true;
+            }
+            else{
+                document.getElementById("id_sede").disabled = false;
+            }
+        };
+    </script>
+
+{% endblock contenido_panel %}

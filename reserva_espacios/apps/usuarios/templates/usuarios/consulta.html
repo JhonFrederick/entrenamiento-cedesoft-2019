@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block titulo%}
+
+Consulta
+
+{% endblock titulo %}
+
+{% block titulo_pagina %}
+Consulta de usuarios
+{% endblock titulo_pagina %}
+
+{% block contenido_panel %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Usuarios</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-wrench"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#" class="dropdown-item">Config option 1</a>
+                        </li>
+                        <li><a href="#" class="dropdown-item">Config option 2</a>
+                        </li>
+                    </ul>
+                    <a class="close-link">
+                        <i class="fa fa-times"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Cedula</th>
+                        <th>Rol</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for usuario in usuarios%}
+                    <tr>
+                        <td>{{usuario.first_name}}</td>
+                        <td>{{usuario.last_name}}</td>
+                        <td>{{usuario.cedula}}</td>
+                        <td>{{usuario.rol}}</td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock contenido_panel %}

@@ -1,5 +1,6 @@
 {% load staticfiles %}
 
+
 <!DOCTYPE html>
 <html>
 
@@ -146,7 +147,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="login.html">
+                            <a href="{% url 'usuarios:login' %}">
                                 <i class="fa fa-sign-out"></i> Log out
                             </a>
                         </li>
@@ -154,7 +155,14 @@
                 </nav>
             </div>
             <div class="row wrapper border-bottom white-bg page-heading">
-                <div class="col-sm-4">
+                <div class="col-sm-8">
+                    {% if messages %}
+                        {% for message in messages %}
+                        <div class = "alert alert-{{message.tags}}">
+                            {{message}}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
                     <h2>{% block titulo_pagina %}This is main title{% endblock %}</h2>
                     <ol class="breadcrumb">
                         {% block miga_pan %}
@@ -167,7 +175,7 @@
                         {% endblock %}
                     </ol>
                 </div>
-                <div class="col-sm-8">
+                <div class="col-sm-4">
                     <div class="title-action">
                         <a href="" class="btn btn-primary">This is action area</a>
                     </div>

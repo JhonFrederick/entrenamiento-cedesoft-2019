@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'apps.usuarios',
+    'apps.reservas',
+    'apps.espacios'
 ]
 
 MIDDLEWARE = [

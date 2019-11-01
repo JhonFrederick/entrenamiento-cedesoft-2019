@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 class Espacio(models.Model):
-    numero = models.CharField(max_length = 4, primary_key=True)
+    numero = models.CharField(max_length = 4)
     
     #TIPO ESPACIO CHOICES
     SALON = 'Salon'
@@ -31,3 +31,6 @@ class Espacio(models.Model):
 
     def __str__(self):
         return self.espacios + " " + self.numero
+
+    class Meta:
+        unique_together = ('numero', 'espacios',)

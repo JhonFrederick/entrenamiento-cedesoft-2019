@@ -22,3 +22,11 @@
         <li><a href="{{ consultar_espacio }}">Consultar</a></li>
     </ul>
 </li>
+
+<li>
+    <a href="#"><i class="fa fa-calendar"></i> <span class="nav-label">Reservas</span></a>
+    <ul class="nav nav-second-level collapse">
+        <li><a href="{% url 'reservas:solicitar' %}">Solicitar</a></li>
+        <li><a href="{% url 'reservas:menu' %}">Consultar</a></li>
+    </ul>
+</li>

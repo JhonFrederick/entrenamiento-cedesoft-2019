@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+{% block titulo%}
+
+Consulta de Espacios
+
+{% endblock titulo %}
+
+{% block titulo_pagina %}
+Consulta de Espacios 
+{% endblock titulo_pagina %}
+
+{% block miga_pan %}
+<li class="breadcrumb-item active">
+    <strong>Reserva de espacios</strong>
+</li>
+{% endblock miga_pan %}
+
+{% block contenido_panel %}
+    <h2>Seleccione un espacio para ver su calendario de reserva</h2>
+
+    {% for espacio in espacios %}
+        <li><a href="{% url 'reservas:consultar_reservas' espacio.id %}">
+            {{espacio.espacios}} {{espacio.numero}}
+        </a></li>
+
+    {% endfor %}
+
+{% endblock contenido_panel %}

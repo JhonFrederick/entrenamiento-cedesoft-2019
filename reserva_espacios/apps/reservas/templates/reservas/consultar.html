@@ -75,23 +75,33 @@ Consulta de Reservas
                     <tbody>
 
                         {% for Espacio in reservas %}
-                        <tr class="gradeA odd" role="row">
-                            <td>{{Espacio.id}}</td>
-                            <td>{{Espacio.id_solicitante}}</td>
-                            <td>{{Espacio.fecha_inicio}}</td>
-                            <td>{{Espacio.fecha_fin}}</td>
-                            <td>{{Espacio.hora_inicio}} - {{Espacio.hora_fin}}</td>
-                            <td>{{Espacio.estado}}</td>
-                            <td>{{Espacio.proposito}}</td>
-                            <td>
-                                <a href="{% url 'reservas:aceptar_reserva' Espacio.id %}">
-                                    <button class="btn btn-success dim"><i class="fa fa-check"></i></button>
-                                </a>
-                                <a href="{% url 'reservas:rechazar_reserva' Espacio.id %}">
-                                    <button class="btn btn-danger dim"><i class="fa fa-times-rectangle"></i></button>
-                                </a>
-                            </td>
-                        </tr>
+                            <tr class="gradeA odd" role="row">
+                                <td>{{Espacio.id}}</td>
+                                <td>{{Espacio.id_solicitante}}</td>
+                                <td>{{Espacio.fecha_inicio}}</td>
+                                <td>{{Espacio.fecha_fin}}</td>
+                                <td>{{Espacio.hora_inicio}} - {{Espacio.hora_fin}}</td>
+                                <td>{{Espacio.estado}}</td>
+                                <td>{{Espacio.proposito}}</td>
+                                <td>
+                                    {% if Espacio.estado == 'Aceptado' %}
+                                        <a href="{% url 'reservas:rechazar_reserva' Espacio.id %}">
+                                            <button class="btn btn-danger dim"><i class="fa fa-times-rectangle"></i></button>
+                                        </a>
+                                    {% elif Espacio.estado == 'Rechazado' %}
+                                        <a href="{% url 'reservas:aceptar_reserva' Espacio.id %}">
+                                            <button class="btn btn-success dim"><i class="fa fa-check"></i></button>
+                                        </a>
+                                    {% elif Espacio.estado == 'En espera' %}
+                                        <a href="{% url 'reservas:aceptar_reserva' Espacio.id %}">
+                                            <button class="btn btn-success dim"><i class="fa fa-check"></i></button>
+                                        </a>
+                                        <a href="{% url 'reservas:rechazar_reserva' Espacio.id %}">
+                                            <button class="btn btn-danger dim"><i class="fa fa-times-rectangle"></i></button>
+                                        </a>
+                                    {% endif %}
+                                </td>
+                            </tr>
                         {% endfor %}
                     </tbody>
                     

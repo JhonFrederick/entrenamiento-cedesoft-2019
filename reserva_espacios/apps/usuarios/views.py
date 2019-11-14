@@ -64,11 +64,7 @@ def logout_view(request):
         logout(request)
         return redirect('login')
 
-<<<<<<< HEAD
-    context = {
-        'usuarios': Usuario.objects.all()
-    }
-=======
+    
 def perfil(request):
     return render(request, 'usuarios/perfil.html')
 
@@ -88,6 +84,5 @@ def editarUsuario(request, cedula):
         error = e 
     
     return render (request,'usuarios/modificar.html',{'usuarios_form':usuarios_form, 'error':error})
->>>>>>> Juan-Santiago
 
-    return render(request, 'usuarios/consulta.html', context)
+    

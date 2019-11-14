@@ -9,4 +9,6 @@ urlpatterns = [
     path('consulta', consulta_usuario, name='consulta_u'),
     path('login/', login_view, name = 'login'),
     path('logout/', logout_view, name = 'logout'),
+    path('perfil/', perfil, name ='perfil'),
+    path('editar_perfil/<str:cedula>', editarUsuario, name = 'editar'),
 ]

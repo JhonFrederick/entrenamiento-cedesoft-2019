@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+
+{% block titulo%}
+
+Modificar Perfil
+
+{% endblock titulo %}
+
+{% block titulo_pagina %}
+Modificar Perfil de usuario
+{% endblock titulo_pagina %}
+
+{% block miga_pan %}
+    <li class="breadcrumb-item active">
+        <strong>Modificar</strong>
+    </li>
+{% endblock miga_pan %}
+
+{% block contenido_panel %}
+    <form method='POST' >
+        {% csrf_token %}
+        {% bootstrap_form usuarios_form %}
+        <div class="form-group">
+            <button class = "btn btn-outline-info" type = "submit">Modificar</button>
+        </div>
+    </form>
+
+
+{% endblock contenido_panel %}

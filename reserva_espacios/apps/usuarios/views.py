@@ -1,9 +1,12 @@
 from django.shortcuts import render, redirect
-from .forms import FormularioRegistroUsuario, FormularioRegistroEstudiante
+from .forms import FormularioRegistroUsuario, FormularioRegistroEstudiante, FormularioModificarUsuario
 from django.contrib.auth.forms import AuthenticationForm, PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from .models import Usuario
+from django.core.exceptions import ObjectDoesNotExist
+
+
 
 def inicio(request):
     return render(request, 'usuarios/inicio.html', {})
@@ -17,7 +20,7 @@ def registro(request):
             a.username = cedula
             a.save()
             messages.success(request, 'Usuario creado exitosamente')
-            return redirect('usuarios:inicio')
+            return redirect('login')
     else:
         form = FormularioRegistroUsuario()
 
@@ -59,10 +62,32 @@ def login_view(request):
 def logout_view(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('usuarios:inicio')
+        return redirect('login')
 
+<<<<<<< HEAD
     context = {
         'usuarios': Usuario.objects.all()
     }
+=======
+def perfil(request):
+    return render(request, 'usuarios/perfil.html')
+
+def editarUsuario(request, cedula):
+    usuarios_form = None
+    error = None
+    try:
+        usuario = Usuario.objects.get(cedula = cedula)
+        if request.method == 'GET':
+            usuarios_form = FormularioModificarUsuario(instance = usuario)
+        else:
+            usuarios_form = FormularioModificarUsuario(request.POST, instance = usuario)
+            if usuarios_form.is_valid():
+                usuarios_form.save()
+            return redirect('usuarios:perfil')
+    except ObjectDoesNotExist as e:
+        error = e 
+    
+    return render (request,'usuarios/modificar.html',{'usuarios_form':usuarios_form, 'error':error})
+>>>>>>> Juan-Santiago
 
     return render(request, 'usuarios/consulta.html', context)

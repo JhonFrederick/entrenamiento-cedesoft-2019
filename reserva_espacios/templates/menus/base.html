@@ -5,14 +5,13 @@
         <img alt="image" class="rounded-circle" src="{% static 'img/profile_small.jpg' %}"/>
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="block m-t-xs font-bold">{{ user.get_full_name }}</span>
-            <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
+            <span class="text-muted text-xs block">{{user.rol}} <b class="caret"></b></span>
         </a>
         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+            <li><a class="dropdown-item" href="{% url 'usuarios:perfil' %}">Profile</a></li>
             <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
             <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
             <li class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="login.html">Logout</a></li>
         </ul>
     </div>
     <div class="logo-element">
@@ -88,7 +87,7 @@
             class="float-right label label-primary">SPECIAL</span></a>
     <ul class="nav nav-second-level collapse">
         <li><a href="contacts.html">Contacts</a></li>
-        <li><a href="profile.html">Profile</a></li>
+        <li><a href="{% url 'usuarios:perfil' %}">Profile</a></li>
         <li><a href="profile_2.html">Profile v.2</a></li>
         <li><a href="contacts_2.html">Contacts v.2</a></li>
         <li><a href="projects.html">Projects</a></li>

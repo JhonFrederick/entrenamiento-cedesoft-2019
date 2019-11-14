@@ -24,6 +24,6 @@ urlpatterns = [
     path('', views.login_view, name = 'login'),
     path('usuarios/', include('apps.usuarios.urls', namespace='usuarios')),
     path('espacios/', include('apps.espacios.urls', namespace='espacios')),
-    path('reservas/', include('apps.reservas.urls', namespace='reservas')),
+    path('reservas/', include('apps.reservas.urls', namespace='reservas'))
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

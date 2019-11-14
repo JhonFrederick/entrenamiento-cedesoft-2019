@@ -1,4 +1,6 @@
 {% extends 'base.html' %}
+{% load staticfiles %}
+
 
 {% block titulo %}
     Perfil
@@ -25,7 +27,7 @@
     </div>
     <div>
         <div class="ibox-content no-padding border-left-right">
-            <img alt="image" class="img-fluid" src="img/profile_big.jpg">
+            <img src="{{user.foto_perfil.url}}">
         </div>
         <div class="ibox-content profile-content">
             <h4><strong>{{user.first_name}} {{user.last_name}}</strong></h4>

@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% load static %}
+{% block titulo%}
+
+Consulta de {{titulo}}
+
+{% endblock titulo %}
+
+{% block titulo_pagina %}
+Consulta de {{titulo}}
+{% endblock titulo_pagina %}
+
+{% block miga_pan %}
+<li class="breadcrumb-item active">
+    <strong>Consultar {{titulo}}</strong>
+</li>
+{% endblock miga_pan %}
+
+{% block contenido_panel %}
+<div class="wrapper wrapper-content">
+    <div class="row animated fadeInDown">
+        <div class="col-lg-3">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Reservas en cola</h5>
+                </div>
+                <div class="ibox-content">
+                    <div id="external-events">
+                        <p>Arrastre una reserva para asignarla al calendario</p>
+                        {% for e in reservasE %}
+                        
+                        <a data-toggle="modal" data-target="#myModal_{{e.codigo_espacio.numero}}">
+                            <div class="external-event navy-bg ui-draggable ui-draggable-handle" id="{{e.id}}" style="position: relative;">{{e.hora_inicio}} - {{e.hora_fin}} {{e.proposito}}</div>
+                        </a>
+                        <div class="modal inmodal" id="myModal_{{e.codigo_espacio.numero}}" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+                            <div class="modal-dialog">
+                            <div class="modal-content animated bounceInRight">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                                        <div>
+                                        <h1 align="center">Datos de la reserva</h1>
+                                        </div>
+                                    </div>
+                                    <div class="modal-body">
+                                        <h3>Fecha y hora de inicio</h3>
+                                        <h5>{{e.fecha_inicio}} - {{e.hora_inicio}}</h5>
+                                        <h3>Fecha y hora de fin</h3>
+                                        <h5>{{e.fecha_fin}} - {{e.hora_fin}}</h5>
+                                        <h3>Nombre y rol del solicitante</h3>
+                                        <h5>{{e.id_solicitante.rol}} {{e.id_solicitante}}</h5>
+                                        <h3>Propósito</h3>  
+                                        <h5>{{e.proposito}}</h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-lg-9">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>Calendario </h5>
+                </div>
+                <div class="ibox-content">
+                    <div id="calendar" class="fc fc-unthemed fc-ltr"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock contenido_panel %}
+
+{% block js %}
+
+<script>
+
+    $(document).ready(function() {
+
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green'
+        });
+
+    /* initialize the external events
+    -----------------------------------------------------------------*/
+
+
+        $('#external-events div.external-event').each(function() {
+
+        // store data so the calendar knows to render an event upon drop
+        $(this).data('event', {
+            title: $.trim($(this).text()), // use the element's text as the event title
+            stick: true // maintain when user navigates (see docs on the renderEvent method)
+        });
+
+        // make the event draggable using jQuery UI
+        $(this).draggable({
+            zIndex: 1111999,
+            revert: true,      // will cause the event to go back to its
+            revertDuration: 0  //  original position after the drag
+        });
+
+        });
+
+
+    /* initialize the calendar
+    -----------------------------------------------------------------*/
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
+
+        $('#calendar').fullCalendar({
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'month,agendaWeek,agendaDay'
+            },
+            editable: true,
+            droppable: true, // this allows things to be dropped onto the calendar
+            drop: function() {
+                // is the "remove after drop" checkbox checked?
+                if ($('#drop-remove').is(':checked')) {
+                    // if so, remove the element from the "Draggable Events" list
+                    $(this).remove();
+                    var oID = $(this).attr("id");
+                    var url = '/reservas/aceptar/'.concat(oID).concat('/');
+                    window.location.assign(url);
+                }
+                var oID = $(this).attr("id");
+                var url = '/reservas/aceptar/'.concat(oID).concat('/');
+                window.location.assign(url);
+            },
+            eventOverlap: function() {
+                return false;
+            },
+            events: [
+                {% for i in reservas %}
+                    {
+                        title: '{{ i.proposito}}',
+                        start: '{{ i.fecha_inicio|date:"Y-m-d"}} {{i.hora_inicio}}',
+                        end: '{{ i.fecha_fin|date:"Y-m-d"}} {{i.hora_fin}}',
+
+                    },
+                {% endfor %}
+            ]
+        });
+
+
+    });
+
+</script>
+{% endblock js %}

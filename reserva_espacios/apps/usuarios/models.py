@@ -63,7 +63,7 @@ class Usuario(AbstractUser):
         default = ESTUDIANTE    
     )
 
-    foto_perfil = models.ImageField(default = 'default.png', upload_to='fotos_perfil')
+    foto_perfil = models.ImageField(upload_to='fotos_perfil')
 
 
 class Estudiante(Usuario):

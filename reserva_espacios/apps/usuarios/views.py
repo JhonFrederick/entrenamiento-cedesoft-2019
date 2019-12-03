@@ -13,7 +13,7 @@ def inicio(request):
 
 def registro(request):
     if request.method == 'POST':
-        form = FormularioRegistroUsuario(request.POST)
+        form = FormularioRegistroUsuario(request.POST, request.FILES)
         if form.is_valid():
             a = form.save(commit=False)
             cedula = form.cleaned_data.get('cedula')

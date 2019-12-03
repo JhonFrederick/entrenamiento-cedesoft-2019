@@ -2,7 +2,7 @@
 
 <li class="nav-header">
     <div class="dropdown profile-element">
-        <img alt="image" class="rounded-circle" src="{% static 'img/profile_small.jpg' %}"/>
+        <img alt="image" class="rounded-circle" src="{{user.foto_perfil.url}}" width="100px" height="100px" />
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="block m-t-xs font-bold">{{ user.get_full_name }}</span>
             <span class="text-muted text-xs block">{{user.rol}} <b class="caret"></b></span>

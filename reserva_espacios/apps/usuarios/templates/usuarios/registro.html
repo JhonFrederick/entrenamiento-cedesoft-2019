@@ -18,7 +18,7 @@ Registro de usuarios
 {% endblock miga_pan %}
 
 {% block contenido_panel %}
-    <form method='POST' >
+    <form method='POST' enctype="multipart/form-data" >
         {% csrf_token %}
         {% bootstrap_form form %}
         <div class="form-group">

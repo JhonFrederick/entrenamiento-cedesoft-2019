@@ -21,7 +21,8 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),  #<-- Solo usar para pruebas iniciales
-    path('', views.login_view, name = 'login'),
+    path('login/', views.login_view, name = 'login'),
+    path('', views.home, name = 'home'),
     path('usuarios/', include('apps.usuarios.urls', namespace='usuarios')),
     path('espacios/', include('apps.espacios.urls', namespace='espacios')),
     path('reservas/', include('apps.reservas.urls', namespace='reservas'))

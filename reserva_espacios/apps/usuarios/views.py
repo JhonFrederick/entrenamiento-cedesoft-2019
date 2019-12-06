@@ -89,4 +89,7 @@ def editarUsuario(request, cedula):
         'usuarios': Usuario.objects.all()
     }
 
+def home(request):
+    return render(request,'usuarios/home.html')
+
     
